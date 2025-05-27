@@ -14,11 +14,19 @@ const loadCategories = () => {
 
 //create display categories
 const displayCategories = (categories) => {
+  const categoryContainer = document.getElementById("categories");
   // add data in html
   categories.forEach((element) => {
     console.log(element);
+
+    //create button
+    const button = document.createElement("button");
+    button.classList = "btn";
+    button.innerText = element.category;
+
+    // add button to category container
+    categoryContainer.append(button);
   });
 };
 
 loadCategories();
-
