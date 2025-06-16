@@ -11,6 +11,13 @@ const loadCategories = () => {
     .then((data) => displayCategories(data.categories))
     .catch((error) => console.log(error));
 };
+const loadVideos = () => {
+  //fetch the data
+  fetch("https://openapi.programming-hero.com/api/phero-tube/videos")
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.log(error));
+};
 
 //create display categories
 const displayCategories = (categories) => {
@@ -30,3 +37,4 @@ const displayCategories = (categories) => {
 };
 
 loadCategories();
+loadVideos();
