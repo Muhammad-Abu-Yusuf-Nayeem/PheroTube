@@ -44,18 +44,21 @@ const displayVideos = (videos) => {
     card.classList = "card card-compact";
     card.innerHTML = `
    
-  <figure>
+  <figure class="h-[200px]">
     <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes" />
+      src=${video.thumbnail}
+      class="h-full w-full object-cover"
+      alt="Shoes" /> 
   </figure>
-  <div class="card-body">
-    <h2 class="card-title">Card Title</h2>
-    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-    <div class="card-actions justify-end">
-      <button class="btn btn-primary">Buy Now</button>
+  <div class="px-0 py-2 flex gap-2">
+    <div>
+      <img src=${video.authors[0].profile_picture}/>
     </div>
-  </div>
+    <div>
+      <h2></h2>
+      <p></p>
+    </div>;
+  </div> 
 
     `;
     videoContainer.append(card);
