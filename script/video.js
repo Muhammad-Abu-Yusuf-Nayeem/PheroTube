@@ -49,7 +49,8 @@ function getStringTime(time) {
   const min = parseInt(time / 60);
   time = time - min * 60;
   const sec = time;
-  return `${year}y ${month}m ${day}d ${hour}h ${min}m ${sec}s ago`;
+  return `${day}d ${hour}h ${min}m ${sec}s ago`;
+  // return `${year}y ${month}m ${day}d ${hour}h ${min}m ${sec}s ago`;
 }
 
 const displayVideos = (videos) => {
@@ -69,7 +70,7 @@ const displayVideos = (videos) => {
         video.others.posted_date?.length == 0
           ? ""
           : `<span class="absolute right-2 bottom-2 text-white bg-black rounded p-1">
-  ${video.others.posted_date}
+  ${getStringTime(video.others.posted_date)}
 </span>`
       }
       
