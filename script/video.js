@@ -27,12 +27,15 @@ const displayCategories = (categories) => {
     console.log(element);
 
     //create button
-    const button = document.createElement("button");
-    button.classList = "btn";
-    button.innerText = element.category;
+    const buttonContainer = document.createElement("div");
+    buttonContainer.innerHTML = `
+      <button class="btn">
+        ${element.category}
+      </button>
+    `;
 
     // add button to category container
-    categoryContainer.append(button);
+    categoryContainer.append(buttonContainer);
   });
 };
 
@@ -69,7 +72,7 @@ const displayVideos = (videos) => {
       ${
         video.others.posted_date?.length == 0
           ? ""
-          : `<span class="absolute right-2 bottom-2 text-white bg-black rounded p-1">
+          : `<span class="absolute right-2 bottom-2 text-xs text-white bg-black rounded p-1">
   ${getStringTime(video.others.posted_date)}
 </span>`
       }
