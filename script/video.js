@@ -1,5 +1,3 @@
-console.log("video script added");
-
 // 1. fetch, load and show categories on html
 
 // create load
@@ -24,7 +22,7 @@ const loadCategoryVideos = (id) => {
   //fetch the data
   fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
     .then((res) => res.json())
-    .then((data) => console.log(data.category))
+    .then((data) => displayVideos(data.category))
     .catch((error) => console.log(error));
 };
 
@@ -33,8 +31,6 @@ const displayCategories = (categories) => {
   const categoryContainer = document.getElementById("categories");
   // add data in html
   categories.forEach((element) => {
-    console.log(element);
-
     //create button
     const buttonContainer = document.createElement("div");
     buttonContainer.innerHTML = `
@@ -67,8 +63,23 @@ function getStringTime(time) {
 
 const displayVideos = (videos) => {
   const videoContainer = document.getElementById("videos");
+  videoContainer.innerHTML = "";
+
+  if (videos.length == 0) {
+    videoContainer.classList.remove("grid");
+    videoContainer.innerHTML = `
+    <div class="min-h-[300] flex flex-col gap-5 justify-center items-center pt-[100px]">
+      <img src="assets/Icon.png"/>
+      <h2 class="text-center text-xl font-bold">No content here</h2>
+    </div>
+  
+    `;
+    return;
+  } else {
+    videoContainer.classList.add("grid");
+  }
   videos.forEach((video) => {
-    console.log(video);
+    // console.log(video);
     const card = document.createElement("div");
     card.classList = "card card-compact";
     card.innerHTML = `
